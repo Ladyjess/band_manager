@@ -1,1 +1,1 @@
-# band_manager
+# Stellar Band Manager
