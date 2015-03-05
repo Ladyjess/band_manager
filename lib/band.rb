@@ -10,7 +10,7 @@ class Band < ActiveRecord::Base
   validates :band_name, {:presence => true, :length => { :maximum => 30 }}
 
   #no callback in band name because bands can use all kinds of characters for
-  #a name. I am not restricting their individuality and mode of expression.
+  #a name. Some are lowercase, so I am not restricting their individuality and mode of expression.
 
 
 

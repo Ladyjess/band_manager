@@ -4,8 +4,12 @@
   <label for="band_name">Enter Band Name: </label>
   <input id="band_name" name="band_name" type="text">
 
+  <label for="performance_date">Enter Date and Time: </label>
+  <input id="performance_date" name="performance_date" type="text" placeholder="March 01, 2015 19:00:00">
+
   <button type="submit">Add Band</button>
 </form>
+
 
 
 
@@ -18,8 +22,9 @@
 
 <li><a href="/bands/<%= band.id %>"><%= band.band_name %></a></li>
 
-  <% end %>
 
+
+  <% end %>
 </ul>
 
  <% else %>
@@ -28,7 +33,10 @@
 
  <% end %>
 
-</br>
+
+
+
+
 
  <p><a href="/venues">See all venues</a></p>
 

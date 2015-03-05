@@ -22,8 +22,19 @@ end
 
 post "/bands" do
   band_name = params["band_name"]
+#  performance_date = params["performance_date"]
+#  concert = Concert.create({:performance_date => performance_date })
   band = Band.create({:band_name => band_name})
   @bands = Band.all
+
+# Code to put in views?
+#
+#  @concerts = Concert.all
+#<% if @concerts.any? %>
+#<% @concerts.each do |concert| %>
+#<%= concert.performance_date %>
+#<% end %>
+
   erb :band
 end
 
@@ -50,7 +61,7 @@ patch "/bands/:id" do
   band_id = params["id"].to_i
   @band = Band.find(band_id)
   @venue_ids = params["venue_ids"]
-  @band.update({:venue_ids => @venue_ids})    #Problem Area?
+  @band.update({:venue_ids => @venue_ids})
   @venues = Venue.all
   erb :band_info
 end
@@ -60,7 +71,7 @@ patch "/venues/:id" do
   @venue = Venue.find(venue_id)
   @band_ids = params["band_ids"]
   if @band_ids
-    @venue.update({:band_ids => @band_ids})   #problem area?
+    @venue.update({:band_ids => @band_ids})
   end
   @bands = Band.all
   erb(:venue_info)
