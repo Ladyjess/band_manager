@@ -1,0 +1,46 @@
+<h1>Stellar Band Manager </h1>
+
+<a href="/bands" id="band-link">Go directly to all bands </a>
+</br>
+</br>
+
+<hr>
+
+</br>
+</br>
+<a href="/venues" id="venue-link">Go directly to all Venues </a>
+
+
+
+
+</br>
+</br>
+
+<h3>Bands and Artists in this database:</h3>
+
+<% if @bands.any? %>
+<p>Click for more information about them and add venues they have performed in:</p>
+
+<ul>
+  <% @bands.each do |band| %>
+  <li><a href="/bands/<%= band.id%>"><%= band.band_name %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no bands added yet!</p>
+<% end %>
+
+
+<h3>Here are all the venues in this database:</h3>
+
+<% if @venues.any? %>
+<p>Click on a venue to see information about it and mark which bands have played there:</p>
+
+<ul>
+  <% @venues.each do |venue| %>
+  <li><a href="/venues/<%= venue.id %>"><%= venue.venue_name %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no venues added yet!</p>
+<% end %>

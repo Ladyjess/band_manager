@@ -1,0 +1,20 @@
+<form action="/bands/<%= @band.id %>/edit" method="post">
+  <input name="_method" type ="hidden" value="patch">
+
+  <label for="band_name">Edit band name:</label>
+  <input id="band_name" name="band_name" type="text">
+
+  <button type="submit">Update band</button>
+</form>
+
+</br>
+</br>
+
+<form action="/bands/<%= @band.id %>/edit" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete band</button>
+</form>
+
+
+<a href="/">Return to Main Page</a>
