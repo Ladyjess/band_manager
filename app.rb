@@ -5,9 +5,8 @@ require 'sinatra/reloader'   #Errors, so not included connection with sinatra-co
 
 
 get "/" do
-  @bands = Band.all
-  @venues = Venue.all
-  @concerts = Concert.all   #In the end, only this will be listed,  not bands and venues separately
+  @concerts = Concert.all
+  #Concert should be able to checkbox a band and a venue, and this will list on the homepage. 
   erb :index
 end
 
