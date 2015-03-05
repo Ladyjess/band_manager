@@ -85,6 +85,7 @@ patch '/bands/:id/edit' do
   band_id = params["id"].to_i
   @band = Band.find(band_id)
   @band.update({:band_name => band_name})
+  @bands = Band.all
   erb :band
 end
 
@@ -93,6 +94,7 @@ patch '/venues/:id/edit' do
   venue_id = params["id"].to_i
   @venue = Venue.find(venue_id)
   @venue.update({:venue_name => venue_name})
+  @venues = Venue.all
   erb :venue
 end
 
