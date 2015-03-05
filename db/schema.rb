@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305004816) do
+ActiveRecord::Schema.define(version: 20150305021535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,14 +23,9 @@ ActiveRecord::Schema.define(version: 20150305004816) do
   end
 
   create_table "concerts", force: :cascade do |t|
-    t.integer "band_id_id"     #Add relation, index true
-    t.integer "venue_id_id"
-    t.integer "band_id"     #t.belongs_to, index true  but no relation found
-    t.integer "venue_id"    #t.belongs_to, index true but no relation found
+    t.integer "band_id"
+    t.integer "venue_id"
   end
-
-  add_index "concerts", ["band_id_id"], name: "index_concerts_on_band_id_id", using: :btree
-  add_index "concerts", ["venue_id_id"], name: "index_concerts_on_venue_id_id", using: :btree
 
   create_table "venues", force: :cascade do |t|
     t.string   "venue_name"
