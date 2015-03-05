@@ -1,0 +1,59 @@
+<form action="/concerts/<%= @concert.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <% if @venues.any? %>
+  <% @venues.each do |venue| %>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="venue_ids[]" value="<%= venue.id %>"><%= venue.venue_name %>
+    </label>
+  </div>
+  <% end %>
+  <% end %>
+
+  <% if @bands.any? %>
+  <form action="/concerts/<%= @concert.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <% @bands.each do |band| %>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="band_ids[]" value="<%= band.id %>"><%= band.band_name %>
+      </label>
+    </div>
+    <% end %>
+    <% end %>
+  <button type="submit">Add it</button>
+</form>
+
+
+<% if @concert.venues.any? %>
+<h3>Here are all the venues:</h3>
+
+<ul>
+  <% @concert.venues.each do |venue| %>
+  <li><%= venue.venue_name %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<% if @concert.bands.any? %>
+
+<h3>Here are all the bands performing here:</h3>
+
+<ul>
+  <% @concert.bands.each do |band| %>
+  <li><%= band.band_name%></li>
+  <% end %>
+</ul>
+<% end %>
+
+
+
+
+
+<a href="/concerts/<%= @concert.id %>/edit">Edit concert</a>
+
+</br>
+</br>
+
+<a href="/">Return to Main Page</a>

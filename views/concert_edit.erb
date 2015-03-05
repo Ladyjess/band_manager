@@ -1,0 +1,20 @@
+<form action="/concerts/<%= @concert.id %>/edit" method="post">
+  <input name="_method" type ="hidden" value="patch">
+
+  <label for="performance_date">Edit performance date:</label>
+  <input id="performance_date" name="peformance_date" type="text">
+
+  <button type="submit">Update</button>
+</form>
+
+</br>
+</br>
+
+<form action="/concerts/<%= @concert.id %>/edit" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete date</button>
+</form>
+
+
+<a href="/">Return to Main Page</a>

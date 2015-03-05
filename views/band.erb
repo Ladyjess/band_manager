@@ -1,18 +1,16 @@
-<h1> List of Bands </h1>
+<div class="container"><span class="rainbow"><h1> List of Bands </span></h1>
 
 <form action="/bands" method="post">
   <label for="band_name">Enter Band Name: </label>
   <input id="band_name" name="band_name" type="text">
 
-  <label for="performance_date">Enter Date and Time: </label>
-  <input id="performance_date" name="performance_date" type="text" placeholder="March 01, 2015 19:00:00">
-
-  <button type="submit">Add Band</button>
+  <button type="submit" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true">Add Band</span></button>
 </form>
 
+</div>
 
 
-
+<div class="container">
 
 <% if @bands.any? %>
 
@@ -43,3 +41,4 @@
  </br>
 
  <p><a href="/">Return to Main Page</a></p>
+</div>

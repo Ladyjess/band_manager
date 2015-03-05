@@ -1,6 +1,6 @@
-<h1>Stellar Band Manager </h1>
+<div class="container"><div class="jumbotron"><span class="rainbow"><h1>Stellar Band Manager </span> </h1></div></div>
 
-<a href="/bands" id="band-link">Go directly to all bands </a>
+<div class="container"><a href="/bands" id="band-link">Go directly to all bands </a>
 </br>
 </br>
 
@@ -10,13 +10,13 @@
 </br>
 <a href="/venues" id="venue-link">Go directly to all Venues </a>
 
-
+</div>
 
 
 </br>
 </br>
 
-<h3>Bands and Artists in this database:</h3>
+<div class="container"><h3>Bands and Artists in this database:</h3>
 
 <% if @bands.any? %>
 <p>Click for more information about them and add venues they have performed in:</p>
@@ -44,3 +44,8 @@
 <% else %>
 <p>There are no venues added yet!</p>
 <% end %>
+
+</div>
+
+
+<h2><a href="/concerts">Create a new Concert here</a></h2>

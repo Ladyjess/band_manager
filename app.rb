@@ -7,6 +7,7 @@ require 'sinatra/reloader'   #Errors, so not included connection with sinatra-co
 get "/" do
   @bands = Band.all
   @venues = Venue.all
+  @concerts = Concert.all   #In the end, only this will be listed,  not bands and venues separately
   erb :index
 end
 
@@ -20,21 +21,15 @@ get "/venues" do
   erb :venue
 end
 
+get "/concerts" do
+  @concerts = Concert.all
+  erb :concert
+end
+
 post "/bands" do
   band_name = params["band_name"]
-#  performance_date = params["performance_date"]
-#  concert = Concert.create({:performance_date => performance_date })
   band = Band.create({:band_name => band_name})
   @bands = Band.all
-
-# Code to put in views?
-#
-#  @concerts = Concert.all
-#<% if @concerts.any? %>
-#<% @concerts.each do |concert| %>
-#<%= concert.performance_date %>
-#<% end %>
-
   erb :band
 end
 
@@ -43,6 +38,13 @@ post "/venues" do
   venue = Venue.create({:venue_name => venue_name})
   @venues = Venue.all
   erb :venue
+end
+
+post "/concerts" do
+  performance_date = params["performance_date"]
+  concert = Concert.create({:performance_date => performance_date})
+  @concerts = Concert.all
+  erb :concert
 end
 
 get "/bands/:id" do
@@ -56,6 +58,14 @@ get "/venues/:id" do
   @bands = Band.all
   erb :venue_info
 end
+
+get "/concerts/:id" do
+  @band = Band.find(params["id"].to_i)
+  @venue = Venue.find(params["id"].to_i)
+  @concerts = Concert.all
+  erb :concert_info
+end
+
 
 patch "/bands/:id" do
   band_id = params["id"].to_i
@@ -77,6 +87,17 @@ patch "/venues/:id" do
   erb(:venue_info)
 end
 
+patch "/concerts/:id" do
+  concert_id = params["id"].to_i
+  @concert = Concert.find(concert_id)
+  @venue_ids = params["venue_ids"]
+  @band_ids = params["band_ids"]
+  @concert.update({:venue_ids => @venue_ids, :band_ids => @band_ids})
+  @venues = Venue.all
+  @bands = Band.all
+  erb :concert_info
+end
+
 
 get "/bands/:id/edit" do
   band_id = params["id"].to_i
@@ -90,6 +111,11 @@ get "/venues/:id/edit" do
   erb :venue_edit
 end
 
+get "/concerts/:id/edit" do
+  concert_id = params["id"].to_i
+  @concert = Concert.find(concert_id)
+erb :concert_edit
+end
 
 patch '/bands/:id/edit' do
   band_name = params["band_name"]
@@ -109,6 +135,15 @@ patch '/venues/:id/edit' do
   erb :venue
 end
 
+patch '/concerts/:id/edit' do
+  performance_date = params["concert_date"]
+  concert_id = params["id"].to_i
+  @concert = Concert.find(concert_id)
+  @concert.update({:performance_date => performance_date})
+  @concerts = Concert.all
+  erb :concert
+end
+
 delete '/bands/:id/edit' do
   band_id = params["id"].to_i
   @band = Band.find(band_id)
@@ -120,5 +155,12 @@ delete '/venues/:id/edit' do
   venue_id = params["id"].to_i
   @venue = Venue.find(venue_id)
   @venue.destroy
+  redirect "/"
+end
+
+delete '/concerts/:id/edit' do
+  concert_id = params["id"].to_i
+  @concert = Concert.find(concert_id)
+  @concert.destroy
   redirect "/"
 end

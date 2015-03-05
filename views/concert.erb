@@ -1,0 +1,31 @@
+<div class="container"><h1>Concerts </h1>
+
+
+<form action="/concerts" method="post">
+<label for="performance_date">Enter Date and Time: </label>
+<input id="performance_date" name="performance_date" type="text" placeholder="March 01, 2015 19:00:00">
+
+
+<button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true">Go!</span></button>
+
+</form>
+
+
+</div>
+
+
+<% if @concerts.any? %>
+<ul>
+<% @concerts.each do |concert| %>
+
+<li><a href="/concerts/<%= concert.id %>"><%= concert.performance_date %></a></li>
+<% end %>
+</ul>
+<% else %>
+
+<p>There are no dates yet</p>
+
+<% end %>
+
+
+<div class="container"><p><a href="/">Return to Main Page</a></p></div>

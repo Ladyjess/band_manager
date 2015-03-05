@@ -1,12 +1,49 @@
 body {
   background-color: darkcyan;
+  width: 80%;
+  height: 80%;
+  font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
 }
 
-h1 {
-  color: white;
+.jumboton {
   text-align: center;
-  text-size: 20px;
+  margin: 20px;
+
 }
+
+.rainbow h1 {
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+ {
+  margin: 0 0 40px;
+  text-transform: uppercase;
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+}
+
+
+p {
+  margin: 0 0 25px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
 
 #band-link {
   border: 10px solid orange;
@@ -17,7 +54,7 @@ h1 {
 }
 
 a:link {
-  color: pink;
+  color: purple;
 }
 
 a:visited {
@@ -25,5 +62,9 @@ a:visited {
 }
 
 a:hover {
-  color: green;
+  color: pink;
+}
+
+body {
+  webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
